@@ -7,10 +7,10 @@ def poly_decay(alpha, x):
          Usage:
          y = poly_decay(alpha, x)
 
-         :param alpha: Exponent of polynomial decay, alpha > 0.
-         :param x: Real float or numpy.array() that is input of polynomial function.
+         :param alpha (float): Exponent of polynomial decay, alpha > 0.
+         :param x (np.array(int)): Real float or numpy.array() that is input of polynomial function.
 
-        :return: Real float or numpy.array() output of polynomial function.
+        :return np.array(float): Real float or numpy.array() output of polynomial function.
     """
     if alpha < 0:
         ValueError("Exponent must be infinite range or ")
