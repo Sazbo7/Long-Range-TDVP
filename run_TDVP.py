@@ -14,7 +14,7 @@ def run_TDVP(L, XY, Z alpha):
     xi_ray = LR_coeffs[0];
 
     model_params = dict(L=70, Jxx=Jx_ray, Jz=Jz_ray, xi=xi_ray, verbose=1)
-    model1 = LongRangeHeisenberg(model_params)
+    model = LongRangeHeisenberg(model_params)
 
     chi = 400;
     delta_t = 0.05
@@ -28,7 +28,7 @@ def run_TDVP(L, XY, Z alpha):
         }
     }
 
-    tdvp_engine = tdvp.Engine(psi, model1, tdvp_params)
+    tdvp_engine = tdvp.Engine(psi, model, tdvp_params)
     times = [];
     Sent = [];
     Sz = [psi.expectation_value('Sz')];
@@ -55,3 +55,6 @@ def run_TDVP(L, XY, Z alpha):
     df = pd.DataFrame(columns=df_columns);
     df = df.append({"alpha": 0.5, "Entanglement Entropy": Sent, "Sz": Sz}, ignore_index=True);
     df.to_pickle(FOLDER + "/long_range_DW_alpha=%1.0dp%2.0dSz=%1.0dp%2.0d.pickle" % (int(alpha), int((alpha % 1)*100), int(Sz), int((Sz%1)*100)));
+
+if __name__ == '__main__':
+    run_TDVP()
