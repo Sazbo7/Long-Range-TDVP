@@ -15,8 +15,7 @@ class LongRangeHeisenberg(MPOModel):
 
         H = \sum_i \sum_{j>i} \sum_k \exp(-\frac{|j-i-1|}{\mathtt{xi[k]}}) (
                   \mathtt{Jxx[k]}/2 (S^{+}_i S^{-}_j + S^{-}_i S^{+}_j)
-                + \mathtt{Jz[k]} S^z_i S^z_j                        ) \\
-            - \sum_i \mathtt{hz} S^z_i
+                + \mathtt{Jz[k]} S^z_i S^z_j)
 
     All parameters are collected in a single dictionary `model_param` and read out with
     :func:`~tenpy.tools.params.get_parameter`.
